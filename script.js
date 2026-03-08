@@ -2,7 +2,6 @@
 
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
-const deleteTaskBtn = document.querySelector(".delete-btn");
 const container = document.querySelector(".container");
 
 addTaskBtn.addEventListener("click", function () {
@@ -23,4 +22,9 @@ addTaskBtn.addEventListener("click", function () {
   taskInput.focus();
 });
 
-// deleteTaskBtn.addEventListener("click", function () {});
+container.addEventListener("click", function (e) {
+  const target = e.target.classList.contains("delete-btn");
+  if (!target) return;
+
+  e.target.parentElement.remove();
+});
