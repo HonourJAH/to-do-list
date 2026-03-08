@@ -1,16 +1,26 @@
 "use strict";
 
-const addtaskBtn = document.getElementById("addTaskBtn");
+const addTaskBtn = document.getElementById("addTaskBtn");
 const taskList = document.getElementById("taskList");
-const ul = document.getElementsByTagName("ul");
+const deleteTaskBtn = document.querySelector(".delete-btn");
+const container = document.querySelector(".container");
 
-addtaskBtn.addEventListener("click", function () {
-  const taskInput = document.getElementById("taskInput").value;
+addTaskBtn.addEventListener("click", function () {
+  let taskInput = document.getElementById("taskInput");
   // console.log(taskInput);
-  const html = `
-  <li>
-    <span>${taskInput}</span>
+  if (!taskInput.value) alert("Please, enter a task.");
+  else {
+    const html = `
+    <li>
+    <span>${taskInput.value}</span>
     <button class="delete-btn">Delete</button>
-  </li>
-  `;
+    </li>
+    `;
+
+    taskInput.value = "";
+    taskList.insertAdjacentHTML("beforeend", html);
+  }
+  taskInput.focus();
 });
+
+// deleteTaskBtn.addEventListener("click", function () {});
